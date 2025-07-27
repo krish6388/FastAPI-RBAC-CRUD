@@ -39,8 +39,9 @@ This is a backend project built with **FastAPI**, **SQLModel**, and **PostgreSQL
 ```bash
 git clone https://github.com/krish6388/FastAPI-RBAC-CRUD.git
 cd FastAPI-RBAC-CRUD
+---
 
-### 2. Create virtual environment
+## 2. Create virtual environment
 
 python -m venv venv
 source venv/bin/activate       # On Windows: venv\Scripts\activate
