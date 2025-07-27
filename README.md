@@ -1,8 +1,6 @@
-# 🗂️ Project Management Backend (FastAPI + PostgreSQL)
+# 🗂️ FAST API Role Based Access Control CRUD (FastAPI + PostgreSQL)
 
 This is a backend project built with **FastAPI**, **SQLModel**, and **PostgreSQL**, implementing secure user registration and login with **JWT authentication** and **role-based access control**.
-
-> This project was developed as part of a technical assessment to demonstrate secure REST API design, RBAC implementation, and clean database modeling with PostgreSQL.
 
 ---
 
@@ -39,9 +37,8 @@ This is a backend project built with **FastAPI**, **SQLModel**, and **PostgreSQL
 ```bash
 git clone https://github.com/krish6388/FastAPI-RBAC-CRUD.git
 cd FastAPI-RBAC-CRUD
----
 
-## 2. Create virtual environment
+### 2. Create virtual environment
 
 python -m venv venv
 source venv/bin/activate       # On Windows: venv\Scripts\activate
