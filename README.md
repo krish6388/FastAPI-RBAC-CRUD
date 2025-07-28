@@ -70,3 +70,8 @@ POST /projects/ → Create project (admin only)
 GET /projects/ → List all projects (all roles)
 
 DELETE /projects/{id} → Delete project (admin only)
+
+PUT /projects/{id} -> Update Project (admin only)
+
+# Video Demo -> https://drive.google.com/file/d/1Egvdb8saHbqWqX-Up-eGsXLV3IYTK4OQ/view?usp=sharing
+This demo doesn't contain PUT route (added in the code later)
