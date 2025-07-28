@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Body, Depends, HTTPException, status
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 from uuid import UUID
 from app.models.project import Project
 from app.models.user import User
 from app.api.deps import get_session, require_role
-from app.schemas.project import ProjectCreate, ProjectRead
+from app.schemas.project import ProjectCreate, ProjectRead, ProjectUpdate
+from fastapi import Path
 
 router = APIRouter(prefix="/projects", tags=["Projects"])
 
@@ -49,3 +50,25 @@ async def delete_project(
     await session.delete(project)
     await session.commit()
     return {"detail": "Project deleted"}
+
+@router.put("/{project_id}", response_model=ProjectRead)
+async def update_project(
+    project_id: UUID = Path(..., description="Project ID to update"),
+    project_in: ProjectUpdate = Body(...),
+    session: AsyncSession = Depends(get_session),
+    current_user: User = Depends(require_role(["admin"]))
+):
+    project = await session.get(Project, project_id)
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+
+    project_data = project_in.dict(exclude_unset=True)
+    for key, value in project_data.items():
+        setattr(project, key, value)
+
+    session.add(project)
+    await session.commit()
+    await session.refresh(project)
+
+    return project
+

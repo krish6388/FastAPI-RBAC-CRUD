@@ -20,3 +20,7 @@ class ProjectRead(BaseModel):
 
     class Config:
         orm_mode = True
+
+class ProjectUpdate(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
